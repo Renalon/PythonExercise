@@ -1,0 +1,21 @@
+name: Deploy to Scalingo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy to Scalingo
+        run: |
+          curl -fsSL https://cli-dl.scalingo.com/install | bash
+          scalingo login --api-token ${{ secrets.SCALINGO_API_TOKEN }}
+          scalingo git:remote --app my-app-name
+          git push scalingo main
