@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+        <title>Веб-приложение</title>
+    </head>
+    <body>
+            <table border="2">
+                <tr>
+                    <td>
+                        <h2>Исходное изображение</h2>
+                        <a href="{{ img_new }}" target="_blank">
+                            <img src="{{ img_new }}" width="450">
+                        </a>
+                    </td>
+                    <td>
+                        <h2>Полученное изображение</h2>
+                        <a href="{{ img_resized_new }}" target="_blank">
+                            <img src="{{ img_resized_new }}" width="450">
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h2>Исходное изображение</h2>
+                        <a href="{{ img }}" target="_blank">
+                            <img src="{{ img }}" width="450">
+                        </a>
+                    </td>
+                    <td>
+                        <h2>Изображение с измененным контрастом</h2>
+                        <a href="{{ img_new_contrast }}" target="_blank">
+                            <img src="{{ img_new_contrast }}" width="450">
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h2>График распределения цветов исходного изображения</h2>
+                        <a href="{{ img_new_plot }}" target="_blank">
+                            <img src="{{ img_new_plot }}" width="450">
+                        </a>
+                    </td>
+                    <td>
+                        <h2>График распределения цветов полученного изображения</h2>
+                        <a href="{{ img_contrast_new_plot }}" target="_blank">
+                            <img src="{{ img_contrast_new_plot }}" width="450">
+                        </a>
+                    </td>
+                </tr>
+            </table>
+     </body>
+</html>

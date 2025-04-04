@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+        <title>Веб-приложение</title>
+    </head>
+    <body>
+        <form method="post" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <table border="0">
+                <tr>
+                    <td class="app_form">{{ form.contrast_coeff.label }}</td>>
+                    <td class="app_form">
+                        {{ form.contrast_coeff(type="number", step="0.10", min="0.10", required=True) }}
+                    </td>>
+                </tr>
+                <tr>
+                    <td class="app_form">{{ form.scale.label }}</td>>
+                    <td class="app_form">
+                        {{ form.scale(type="number", step="0.01", min="0.01", required=True) }}
+                    </td>>
+                </tr>
+                {% for element in form %}
+                    {% if element.widget.input_type != 'hidden' and element.name not in ['scale', 'contrast_coeff'] %}
+                        <tr>
+                            <td class="app_form">{{ element.label }}</td>
+                            <td class="app_form">{{ element() }}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+                <tr>
+                    <td class="app_form"><p>{{ result }}</p></td>
+                    <td class="app_form"><input type="submit" name="submit_button" value="Обработать"></td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
