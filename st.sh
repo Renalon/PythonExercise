@@ -1,10 +1,21 @@
-gunicorn --bind 127.0.0.1:5000 wsgi:app & APP_PID=$!
-sleep 25
-echo start client
+#!/bin/bash
+
+# Запуск Gunicorn с правильным портом
+gunicorn --bind 0.0.0.0:$PORT wsgi:app &  
+APP_PID=$!
+
+# Ждем, пока сервер стартует
+sleep 25  
+
+echo "Start client"
 python3 client.py
 APP_CODE=$?
-sleep 5
-echo $APP_PID
+
+# Даем серверу чуть-чуть поработать перед выключением
+sleep 5  
+
+echo "Stopping Gunicorn (PID: $APP_PID)"
 kill -TERM $APP_PID
-echo app code $APP_CODE
+
+echo "App exit code: $APP_CODE"
 exit $APP_CODE
